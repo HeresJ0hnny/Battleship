@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Test
+comment1.params=
+comment1.target=Test()
+comment2.params=x
+comment2.target=int\ wow(int)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+comment3.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+numComments=4

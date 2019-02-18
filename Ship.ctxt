@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Ship
+comment0.text=\r\n\ A\ ship\ on\ the\ battleship\ board.\r\n\r\n\ @author\ Jonathan\ Shi\r\n\ @version\ 14\ December\ 2018\r\n
+comment1.params=end1\ end2\ name
+comment1.target=Ship(int[],\ int[],\ java.lang.String)
+comment1.text=\r\n\ Creates\ a\ ship\ object.\r\n\ @param\ end1\ \ the\ first\ end\ of\ the\ ship\r\n\ @param\ end2\ \ the\ second\ end\ of\ the\ ship\r\n\ @param\ name\ \ the\ name\ of\ the\ ship\r\n
+comment2.params=
+comment2.target=int\ getLength()
+comment2.text=\r\n\ Gives\ the\ ship's\ length\r\n\ @return\ the\ length\ of\ the\ ship\r\n
+comment3.params=
+comment3.target=int[][]\ getEnds()
+comment3.text=\r\n\ Gives\ the\ ends\ of\ the\ ship\r\n\ @return\ a\ list\ of\ the\ coordinates\ of\ both\ ends\r\n
+comment4.params=
+comment4.target=int[][]\ getSegs()
+comment4.text=\r\n\ Gives\ all\ the\ segments\ of\ the\ ship\r\n\ @return\ a\ list\ of\ all\ the\ coordinates\ of\ the\ ship\ sections\r\n
+comment5.params=
+comment5.target=java.lang.String\ getName()
+comment5.text=\r\n\ Gives\ the\ ship's\ name\r\n\ @return\ the\ name\ of\ the\ ship\r\n
+numComments=6

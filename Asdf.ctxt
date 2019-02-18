@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Asdf
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Asdf\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=x
+comment1.target=Asdf(int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Asdf\r\n
+comment2.params=
+comment2.target=int\ getX()
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+comment3.params=x
+comment3.target=void\ setX(int)
+numComments=4
