@@ -1,10 +1,3 @@
-
-/**
- * A ship on the battleship board.
- *
- * @author Jonathan Shi
- * @version 14 December 2018
- */
 public class Ship
 {
     private int[] end1;
@@ -12,7 +5,7 @@ public class Ship
     private int length;
     private int[][] segments;
     private String name;
-    
+
     /**
      * Creates a ship object.
      * @param end1  the first end of the ship
@@ -28,7 +21,7 @@ public class Ship
             this.length = Math.abs((end1[0] - end2[0]) + (end1[1] - end2[1])) + 1;
             this.segments = new int[this.length][2];
             this.name = name;
-            
+
             if (end1[0] == end2[0])
             {
                 int start = Math.min(end1[1],end2[1]);
@@ -63,7 +56,7 @@ public class Ship
     {
         return length;
     }
-    
+
     /**
      * Gives the ends of the ship
      * @return a list of the coordinates of both ends
@@ -72,7 +65,7 @@ public class Ship
     {
         return new int[][] {end1, end2};
     }
-    
+
     /**
      * Gives all the segments of the ship
      * @return a list of all the coordinates of the ship sections
@@ -81,7 +74,7 @@ public class Ship
     {
         return segments;
     }
-    
+
     /**
      * Gives the ship's name
      * @return the name of the ship

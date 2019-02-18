@@ -1,21 +1,18 @@
 /**
  * Implements all the methods for a board to play Battleship.
- * 
+ *
  * Board values:
  * 0 = water
  * 1 = miss
  * 2 = ship
  * 3 = ship (hit)
- * 
- * @author Jonathan Shi
- * @version 14 December 2018
  */
 import java.util.*;
 public class BattleshipBoard
 {
     private int[][] board;
     private int player;
-    
+
     /**
      * Creates a Battleship board
      * @param player  the player number of the board
@@ -25,7 +22,7 @@ public class BattleshipBoard
         this.board = new int[10][10];
         this.player = player;
     }
-    
+
     /**
      * Gives the array of the board.
      * @param hidden  whether the locations of ships should be hidden or not
@@ -57,7 +54,7 @@ public class BattleshipBoard
             return secret;
         }
     }
-    
+
     /**
      * Gives the player that is in control of the board.
      * @return the player number
@@ -66,7 +63,7 @@ public class BattleshipBoard
     {
         return player;
     }
-    
+
     /**
      * Gives the board but as a string
      * @return the string of the board
@@ -76,7 +73,7 @@ public class BattleshipBoard
         String display = Arrays.deepToString(getBoard(hidden)).replace(",","").replace("] [","\n");
         return display.substring(2,display.length()-2);
     }
-    
+
     /**
      * Sets the value of a spot on the board to a given value.
      * @param row  the row of the spot
@@ -87,7 +84,7 @@ public class BattleshipBoard
     {
         board[row][column] = number;
     }
-    
+
     /**
      * Determines whether a ship can be placed (if all the spaces a ship will occupy are empty)
      * @param row  the row of the first end of the ship
@@ -123,7 +120,7 @@ public class BattleshipBoard
         }
         return empty;
     }
-    
+
     /**
      * Generates a list of coordinates to place the second end of the ship.
      * @param row  the row of the first end of the ship
@@ -160,7 +157,7 @@ public class BattleshipBoard
             return new int[][] {{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
         }
     }
-    
+
     /**
      * Chooses a spot adjacent to the one provided that has not been shot
      * @param row  the row of the spot
@@ -189,7 +186,7 @@ public class BattleshipBoard
         }
         return new int[] {-1,-1};
     }
-    
+
     /**
      * Shoots at the given coordinates.
      * @param row  the row of the spot to shoot at

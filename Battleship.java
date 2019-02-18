@@ -1,16 +1,9 @@
-/**
- * Runs Battleship and the graphics.
- * See README for controls
- *
- * @author Jonathan Shi
- * @version 13 December 2018
- */
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
 public class Battleship extends JPanel implements ActionListener, MouseListener
-{   
+{
     private BattleshipBoard[] players;
     private Ship[][] ships;
     private String mode;
@@ -24,13 +17,13 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
     private int numHits;
     private int[][] weirdHits;
     private int numWeird;
-    
+
     private int[] select;
     private int[][] choose;
     private int[] shot;
     private int sinking;
     private int sinkingAi;
-    
+
     private JFrame frame;
     private int height;
     private int width;
@@ -66,7 +59,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         sinking = MIN;
         sinkingAi = MIN;
     }
-    
+
     /**
      * Creates the window for the game's graphics.
      */
@@ -86,7 +79,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         topOffset = frame.getHeight() - frame.getContentPane().getHeight();
         sideOffset = frame.getWidth() - frame.getContentPane().getWidth();
     }
-    
+
     /**
      * Displays a board and its contents on the screen.
      * @param board  the BattleshipBoard object to display
@@ -122,7 +115,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             }
         }
     }
-    
+
     /**
      * Creates the Ship objects and adds them to a list of the ships
      * @param end1  the coordinates of the first end of the ship
@@ -147,7 +140,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         }
         repaint();
     }
-    
+
     /**
      * Draws everything on the game screen
      * @param g  the screen's graphics
@@ -159,7 +152,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         width = frame.getContentPane().getWidth();
         int boxSide = height/21;
         g.setColor(Color.BLACK);
-        
+
         for (int i = boxSide/2; i < boxSide*20; i += boxSide)
         {
             g.drawLine((width-boxSide*10)/2,i,(width+boxSide*10)/2,i);
@@ -173,10 +166,10 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         g.setColor(Color.BLUE);
         g.drawRect((width-boxSide*10)/2,boxSide/2,boxSide*10,boxSide*10);
         g.drawRect((width-boxSide*10)/2,boxSide*21/2+5,boxSide*10,boxSide*10);
-        
+
         drawBoard(players[0],turn,g);
         drawBoard(players[1],turn,g);
-        
+
         if (select[4] == height*width)
         {
             g.setColor(new Color(255,255,0,127));
@@ -197,9 +190,9 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             ships[2-turn][sinking] = null;
             sinking = MIN;
             boolean end = true;
-            for (Ship boat : ships[2-turn]) 
+            for (Ship boat : ships[2-turn])
             {
-                if (boat != null) 
+                if (boat != null)
                 {
                     end = false;
                     break;
@@ -210,15 +203,15 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
                 mode = "finished";
             }
         }
-        
+
         if (sinkingAi >= 0 && ai)
         {
             ships[0][sinkingAi] = null;
             sinkingAi = MIN;
             boolean end = true;
-            for (Ship boat : ships[0]) 
+            for (Ship boat : ships[0])
             {
-                if (boat != null) 
+                if (boat != null)
                 {
                     end = false;
                     break;
@@ -229,7 +222,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
                 mode = "finished" + "AI";
             }
         }
-        
+
         if (mode.equals("finished") || mode.equals("finished"+"AI"))
         {
             g.setColor(new Color(0, 255, 0));
@@ -237,7 +230,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             if (mode.equals("finished")) g.drawString("Player " + turn + " wins!",(width+11*boxSide)/2,height/2);
             else g.drawString("AI wins!",(width+11*boxSide)/2,height/2);
         }
-        
+
         g.setColor(Color.LIGHT_GRAY);
         if (mode.equals("place") || mode.equals("shoot") || mode.equals("taken") || mode.equals("finished") || mode.equals("finished"+"AI"))
         {
@@ -281,7 +274,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
                 }
             }
         }
-        
+
         g.setColor(new Color(0,0,255,127));
         for (int[] i : choose)
         {
@@ -290,12 +283,12 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
                 g.fillRect((width-boxSide*10)/2+boxSide*i[1]+1,boxSide*21/2+boxSide*i[0]+6,boxSide-1,boxSide-1);
             }
         }
-        
+
         if (shot[0] != -1)
         {
             g.fillRect((width-boxSide*10)/2+boxSide*shot[1]+1,boxSide/2+boxSide*shot[0]+1,boxSide-1,boxSide-1);
         }
-        
+
         ImageIcon play = new ImageIcon();
         if (mode.equals("place"))
         {
@@ -328,14 +321,14 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         {
             play = new ImageIcon("icons/play2.png");
         }
-        
+
         g.setColor(BG_COLOR);
         ImageIcon player = new ImageIcon("icons/player.png");
         g.drawImage(player.getImage(),width-110,height-110,null);
         g.setFont(new Font("SansSerif",Font.PLAIN,40));
         g.drawString(""+turn,width-71,height-63);
         if (!mode.equals("taken")) g.drawImage(play.getImage(),width-180,height-63,null);
-        
+
         if (mode.equals("nextPlace") || mode.equals("transition") || mode.equals("nextShoot"))
         {
             g.setColor(new Color(0,191,255));
@@ -360,7 +353,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             g.drawString("Battleship",width/2-210,height/2-120);
         }
     }
-    
+
     /**
      * Randomizes the placement of ships.
      */
@@ -388,7 +381,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             newShip(coords,options[pick]);
         }
     }
-    
+
     /**
      * Computes where the AI should shoot.
      */
@@ -519,7 +512,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
                 hits = new int[][] {{-1,-1}};
                 numHits = 0;
                 for (int[] shot : oldHits)
-                {   
+                {
                     boolean sunkPart = false;
                     for (int[] segment : ships[0][boatIndex].getSegs())
                     {
@@ -541,7 +534,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             }
         }
     }
-    
+
     /**
      * Does all the actions during the AI's turn.
      */
@@ -552,7 +545,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         turn = 1;
         mode = "shoot";
     }
-    
+
     /**
      * Actions that occur when the mouse is pressed.
      * @param me  the object of the mouse being pressed
@@ -614,7 +607,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         if (mode.equals("taken"))
         {
             mode = "nextShoot";
-        }  
+        }
         else if (mode.equals("nextPlace"))
         {
             mode = "place";
@@ -650,7 +643,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         {
             if (mode.equals("place") && shipNum >= ships[turn-1].length)
             {
-                if (turn == 1) 
+                if (turn == 1)
                 {
                     turn = 2;
                     shipNum = 0;
@@ -703,7 +696,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
                     }
                     if (sunk)
                     {
-                       sinking = boatIndex; 
+                       sinking = boatIndex;
                     }
                 }
                 shot = new int[] {-1,-1};
@@ -737,7 +730,7 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
         }
         repaint();
     }
-    
+
     /**
      * Runs all the actions for when the mouse is clicked twice
      * @param me  the object for when the mouse is clicked
@@ -790,13 +783,13 @@ public class Battleship extends JPanel implements ActionListener, MouseListener
             }
         }
     }
-    
+
     public static void main(String[] args)
     {
         Battleship b = new Battleship();
         b.window();
     }
-    
+
     public void actionPerformed(ActionEvent me) {}
     public void mouseReleased(MouseEvent me) {}
     public void mouseEntered(MouseEvent me) {}
